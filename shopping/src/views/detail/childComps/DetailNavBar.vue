@@ -5,17 +5,17 @@
            class="back"
            @click="backClick">
         <img src="~assets/img/common/back.svg"
-             alt="">
+             alt="" />
       </div>
 
       <div slot="center"
            class="title">
-        <div v-for="(item,index) in titles"
+        <div v-for="(item, index) in titles"
              :key="index"
              class="title-item"
-             :class="{active:index ===currentIndex}"
+             :class="{ active: index === currentIndex }"
              @click="titleClick(index)">
-          {{item}}
+          {{ item }}
         </div>
       </div>
     </nav-bar>
@@ -38,8 +38,8 @@ export default {
   },
   methods: {
     titleClick(index) {
-      this.currentIndex = index;
-      this.$emit('titleClick',index)
+      this.currentIndex = index
+      this.$emit('titleClick', index)
     },
     backClick() {
       this.$router.back()
@@ -47,7 +47,7 @@ export default {
   },
 }
 </script>
-<style  scoped>
+<style scoped>
 .title {
   display: flex;
   font-size: 13px;
@@ -63,4 +63,5 @@ export default {
 .back img {
   margin-top: 12px;
 }
+/*  hello */
 </style>
