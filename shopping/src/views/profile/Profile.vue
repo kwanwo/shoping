@@ -121,7 +121,7 @@
 <style scoped>
   .content {
     height: 300px;
-    background-color: red;
+    background-color: #f50;
     overflow: hidden;
   }
 </style>

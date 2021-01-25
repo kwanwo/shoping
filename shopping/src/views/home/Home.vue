@@ -1,5 +1,5 @@
 <template>
-	<div id="home">
+	<div id="home" ref="homefresh">
 		<nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
 		<tab-control :titles="['流行', '新款', '精选']" @tabClick="tabClick" ref="tabControl1" class="tab-control" v-show="isTabFixed"></tab-control>
 		<scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true" @pullingUp="loadMore">
@@ -60,7 +60,8 @@ export default {
 			return this.goods[this.currentType].list;
 		},
 		activated() {
-			this.$refs.scroll.refresh();
+      this.$refs.scroll.refresh();
+     
 		},
 		deactivated() {
 			this.$bus.$off('itemImgLoad', this.itemImgListener);
@@ -69,10 +70,10 @@ export default {
 
 	created() {
 		this.getHomeMultidata();
-
 		this.getHomeGoods('pop');
 		this.getHomeGoods('new');
-		this.getHomeGoods('sell');
+    this.getHomeGoods('sell');
+
 	},
 	
 	methods: {
