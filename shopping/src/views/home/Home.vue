@@ -3,7 +3,7 @@
 		<nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
 		<tab-control :titles="['流行', '新款', '精选']" @tabClick="tabClick" ref="tabControl1" class="tab-control" v-show="isTabFixed"></tab-control>
 		<scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true" @pullingUp="loadMore">
-			<home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
+			<home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad" ref="hSwiper"></home-swiper>
 			<recommend-view :recommends="recommends"></recommend-view>
 			<feature-view></feature-view>
 			<tab-control :titles="['流行', '新款', '精选']" @tabClick="tabClick" ref="tabControl2"></tab-control>
@@ -61,10 +61,12 @@ export default {
 		},
 		activated() {
       this.$refs.scroll.refresh();
+      this.$refs.hSwiper.startTimer();
      
 		},
 		deactivated() {
-			this.$bus.$off('itemImgLoad', this.itemImgListener);
+      this.$bus.$off('itemImgLoad', this.itemImgListener);
+      this.$refs.hSwiper.stopTimer();
 		}
 	},
 
